@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+
+        <script src="https://kit.fontawesome.com/e53dfcfd7d.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/CSS/home.css">
+    </head>
+    <body>
+
+       
+          <div id="heading-container">
+        <h1>TODO App</h1>
+    </div>
+             
+         <form action="/todo/create-todo" method="POST" id="frm">
+      <div class="description">
+        DESCRIPTION
+        <br>
+        <input type="text" name ="comment" placeholder="what do you need to do?"  class="inpt">
+      </div>
+      <div class="ctg">
+      <div class="sp1">
+        <p>CATEGORY</p>
+        <select class="drop-down" name="category" >
+          <option class="opn " selected> choose a category</option>
+          <option class="opn " name="category"> WORK</option>
+          <option class="opn " name="category"> PERSONAL</option>
+          <option class="opn " name="category"> SCHOOL</option>
+          <option class="opn " name="category"> CLEANING</option>
+          <option class="opn " name="category"> OTHER</option>
+        </select>
+      </div>
+      <div class="sp2">
+        <p>DUE DATE</p>
+        <input type="date"  name="date" id="start" class="date">
+      </div>
+    </div>
+     <div class="btns">
+      
+        <button  type="submit"class="btn btn1">
+            <i class="fa-solid fa-plus"></i>
+            ADD TASK
+        </button>
+       
+      </form>
+
+      <form action="/todo/delete-todo" method="POST" id="frm">
+    
+        <button  type= "submit" class="btn btn2">
+            <i class="fa-solid fa-trash-can"></i>
+            DELETE TASK
+        </button>
+     </div>
+          <% for(let i of todo_list){%> 
+            <li id="list" style="list-style: none; margin-left: 0px;">
+              
+               <div class="tsk">
+              <input type="checkbox" name="checkbox" value="<%=i._id%>" >
+                    <%=i.comment%>
+                  <br>
+                  <i class="fa-regular fa-calendar-days cln"></i><%=i.date%>
+                 <div class="category"> <%=i.category%></div>
+              </div>
+            
+           </li>
+          <%}%>
+        </form>
+    </body>
+
+</html>
